@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+
+	<package name="web"  namespace="/" extends="struts-default">
+       
+        <!-- Action de l'action de réference -->   
+        <default-action-ref name="login"/> 
+        
+        <action name="login">
+          <result>/login.jsp</result>
+        </action>
+        
+        <action name="validerLogin" class="web.ServiceAction"  method="login">
+        	<result name="success">/AjoutEmprunt.jsp</result>
+        	<result name="input">/login.jsp</result>
+        	<result name="error">/login.jsp</result>
+        </action>  
+        <action name="validerAjoutEmprunt" class="web.ServiceAction" method="addEmprunt">
+        	<result name="success">/ConsultDisponible.jsp</result>
+            <result name="input">/AjoutEmprunt.jsp</result>
+        	<result name="error">/AjoutEmprunt.jsp</result>	
+        
+        </action>
+        
+        <action name="inscription">
+        	<result name="success">/inscription.jsp</result>
+        </action>	
+        <action name="validerInscription" class="web.ServiceAction" method="validerInscription">
+        	<result name="success">/login.jsp</result>
+        	<result name="input">/inscription.jsp</result>
+        	<result name="error">/inscription.jsp</result>
+        </action>
+        
+        <action name="ConsultDisponible" class="web.ServiceAction" 
+                method="getAvailableExemplaire" >
+        	<result >/ConsultDisponible.jsp</result>
+        </action>
+        <action name="ajoutEmprunt" class="web.ServiceAction" method="getAvailableExemplaire">
+        	<result name="success">/AjoutEmprunt.jsp</result>
+        </action>
+   
+
+ 	</package>   
+ </struts>   
+    

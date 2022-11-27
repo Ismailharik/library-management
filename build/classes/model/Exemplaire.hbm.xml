@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>  
+	<class name="model.Exemplaire" table="EXEMPLAIRE">  
+		<id name="code" column="code">	
+ 
+			<generator class="assigned"></generator>  
+		</id>  
+		<property name="disponible"/>
+
+	<list name="personnes" table="exemp_pers">
+		<key column="code" />
+		<index column="type"/>  
+		<many-to-many class="model.Personne" column="personneId" />
+	</list>
+	<many-to-one name="livre" column="num"  cascade="all"></many-to-one>
+		
+	            
+	</class>  
+            
+</hibernate-mapping>  
+
+

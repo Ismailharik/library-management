@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>  
+	<class name="model.Livre" table="LIVRE">  
+		<id name="num">
+			<generator class="increment"></generator>  
+		</id>  		
+		<property name="titre"></property>
+		
+		<set name="exemplaires" table="livre_exemplaire" fetch="select" cascade="all">
+			<key column="num"  />	
+			<one-to-many  class="model.Exemplaire" ></one-to-many>
+	    </set>        	
+	</class>  
+            
+</hibernate-mapping>  

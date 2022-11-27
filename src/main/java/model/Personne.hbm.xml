@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>  
+	<class name="model.Personne" table="PERSONNE" discriminator-value="prs">  
+		<id name="id">  
+			<column name="personneId"/>
+			<generator class="increment"></generator>  
+		</id>  
+		  
+		<discriminator column="type" type="string"></discriminator>  
+		
+		<property name="nom"></property>
+		<property name="prenom"></property>
+		<property name="motPasse"></property>
+	
+		  
+	            
+		<subclass name="model.Etudiant" discriminator-value="etudiant">  
+			<property name="CNE"></property>
+		</subclass>  
+	            	            
+	</class>  
+            
+</hibernate-mapping>  
+
+
